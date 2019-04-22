@@ -1,0 +1,6 @@
+@import url("https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.4/css/bulma.css");
+@import url("https://use.fontawesome.com/releases/v5.8.1/css/all.css");
+
+* {
+  font-family: Lato;
+}
