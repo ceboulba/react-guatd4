@@ -18,36 +18,47 @@ export default class App extends Component {
         : this.state.sessionTime > 1 ?
           this.setState({ sessionTime: this.state.sessionTime -= 1 })
           : null
-      : null
-
-
-
+      : event.target.value === 'add' ?
+        this.setState({ breakTime: this.state.breakTime += 1 })
+        : this.state.breakTime > 1 ?
+          this.setState({ breakTime: this.state.breakTime -= 1 })
+          : null
 
     console.log('in handleClick')
     console.log('event => ', event.target.value)
     console.log('etat => ', event.target.getAttribute('etat'))
   }
 
+  oneMinute = (second) => {
+
+  }
+
   render() {
     return (
       <div className="hero">
-        <Title title="Fcc Pomodoro Clock" />
-        <div className="has-text-centered">
-          <div>
-            <Button btnName='addSessionTime' action={this.handleClick} value='add' etat='sessionTime' />
-            <Button btnName='subSessionTime' action={this.handleClick} value='sub' etat='sessionTime' />
-          </div>
-          <h2 className="subtitle">
-            {this.state.sessionTime}
-          </h2>
+        <div className="hero-body">
+          <div className="container">
+            <Title title="Fcc Pomodoro Clock" />
+            <div className="has-text-centered">
+              <div>
+                <Button btnName='subSessionTime' action={this.handleClick} value='sub' etat='sessionTime' />
+                <Button btnName='addSessionTime' action={this.handleClick} value='add' etat='sessionTime' />
+              </div>
+              <h2 className="subtitle">
+                {this.state.sessionTime}
+              </h2>
+            </div>
 
-          <div>
-            <Button btnName='addBreakTime' action={this.handleClick} value='add' etat='breakTime' />
-            <Button btnName='subBreakTime' action={this.handleClick} value='sub' etat='breakTime' />
+            <div className="has-text-centered">
+              <div>
+                <Button btnName='subBreakTime' action={this.handleClick} value='sub' etat='breakTime' />
+                <Button btnName='addBreakTime' action={this.handleClick} value='add' etat='breakTime' />
+              </div>
+              <h2 className="subtitle has-text-centered">
+                {this.state.breakTime}
+              </h2>
+            </div>
           </div>
-          <h2 className="subtitle has-text-centered">
-            {this.state.breakTime}
-          </h2>
         </div>
       </div>
     );
