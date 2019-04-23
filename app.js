@@ -31,8 +31,14 @@ export default class App extends Component {
     console.log('etat => ', event.target.getAttribute('etat'))
   }
 
-  oneMinute = (second) => {
-    console.log(second)
+  oneMinute = (event) => {
+    console.log(event)
+    this.state.second > 1 ?
+      setTimeout( ()=>{
+        this.setState({second:this.state.second -= 1})
+        this.oneMinute()
+        },1000 )
+      : null
   }
 
   render() {
@@ -61,6 +67,9 @@ export default class App extends Component {
               </h2>
             </div>
             <BtnPlay action={this.oneMinute} />
+            <h2 className="subtitle has-text-centered">
+              {this.state.second}
+            </h2>
           </div>
         </div>
       </div>
