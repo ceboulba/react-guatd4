@@ -14,10 +14,12 @@ export default class App extends Component {
   handleClick = (event) => {
     event.target.getAttribute('etat') === 'sessionTime' ?
       event.target.value === 'add' ?
-      this.setState({ sessionTime: this.state.sessionTime += 1 })
-      : this.setState({ sessionTime: this.state.sessionTime -= 1 })
-      :null
-     
+        this.setState({ sessionTime: this.state.sessionTime += 1 })
+        : this.state.sessionTime > 1 ?
+          this.setState({ sessionTime: this.state.sessionTime -= 1 })
+          : null
+      : null
+
 
 
 
