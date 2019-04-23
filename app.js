@@ -7,7 +7,8 @@ export default class App extends Component {
     super(props);
     this.state = {
       sessionTime: 25,
-      breakTime: 5
+      breakTime: 5,
+      second: 60
     }
   }
 
@@ -30,7 +31,7 @@ export default class App extends Component {
   }
 
   oneMinute = (second) => {
-
+    console.log(second)
   }
 
   render() {
