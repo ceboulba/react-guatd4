@@ -37,7 +37,7 @@ export default class App extends Component {
       setTimeout( ()=>{
         this.setState({second:this.state.second -= 1})
         this.oneMinute()
-        },1000 )
+        },100 )
       : null
   }
 
