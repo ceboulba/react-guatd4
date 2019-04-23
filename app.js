@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react'
 import Title from './title'
 import Button from './button'
+import BtnPlay from './btnPlay'
 
 export default class App extends Component {
   constructor(props) {
@@ -38,7 +39,7 @@ export default class App extends Component {
     return (
       <div className="hero">
         <div className="hero-body">
-          <div className="container">
+          <div className="container has-text-centered">
             <Title title="Fcc Pomodoro Clock" />
             <div className="has-text-centered">
               <div>
@@ -59,6 +60,7 @@ export default class App extends Component {
                 {this.state.breakTime}
               </h2>
             </div>
+            <BtnPlay action={this.oneMinute} />
           </div>
         </div>
       </div>
