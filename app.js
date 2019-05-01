@@ -9,7 +9,7 @@ export default class App extends Component {
     this.state = {
       sessionTime: 25,
       breakTime: 5,
-      second: 60
+      second: Math.round( 990 / 16.67 )
     }
   }
 
