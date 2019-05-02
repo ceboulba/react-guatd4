@@ -31,14 +31,20 @@ export default class App extends Component {
     console.log('etat => ', event.target.getAttribute('etat'))
   }
 
-  oneMinute = (event) => {
-    console.log(event)
-    this.state.second > 1 ?
-      setTimeout( ()=>{
-        this.setState({second:this.state.second -= 1})
-        this.oneMinute()
-        },100 )
-      : null
+  // oneMinute = (event) => {
+  //   console.log(event)
+  //   this.state.second > 1 ?
+  //     setTimeout( ()=>{
+  //       this.setState({second:this.state.second -= 1})
+  //       this.oneMinute()
+  //       },100 )
+  //     : null
+  // }
+
+oneMinute = (event) => {
+    console.log('theEvent come', event)
+    const time = this.state.sessionTime * 1000
+    console.log('variable Time' , time)
   }
 
   render() {
