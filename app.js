@@ -9,6 +9,7 @@ export default class App extends Component {
     this.state = {
       sessionTime: 25,
       breakTime: 5,
+      time :1000,
       second: Math.round( 990 / 16.67 )
     }
   }
@@ -31,20 +32,13 @@ export default class App extends Component {
     console.log('etat => ', event.target.getAttribute('etat'))
   }
 
-  // oneMinute = (event) => {
-  //   console.log(event)
-  //   this.state.second > 1 ?
-  //     setTimeout( ()=>{
-  //       this.setState({second:this.state.second -= 1})
-  //       this.oneMinute()
-  //       },100 )
-  //     : null
-  // }
-
 oneMinute = (event) => {
+  while(this.state.time > 0) {
+    setInterval( () => this.setState({time : this.state.time -= 100}), 100  )
+  }
     console.log('theEvent come', event)
     const time = this.state.sessionTime * 1000
-    console.log('variable Time' , time)
+    console.log('variable Time' , this.state.time)
   }
 
   render() {
