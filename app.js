@@ -57,6 +57,7 @@ export default class App extends Component {
                 <Button btnName='subSessionTime' action={this.handleClick} value='sub' etat='sessionTime' />
                 <Button btnName='addSessionTime' action={this.handleClick} value='add' etat='sessionTime' />
                 <Button btnName='newBtn' action={this.addOne} />
+                <Count />
               </div>
               <h2 className="subtitle">
                 {this.state.sessionTime}
@@ -64,7 +65,6 @@ export default class App extends Component {
             </div>
 
             <div className="has-text-centered">
-            <Count time={this.state.sessionTime} />
               <div>
                 <Button btnName='subBreakTime' action={this.handleClick} value='sub' etat='breakTime' />
                 <Button btnName='addBreakTime' action={this.handleClick} value='add' etat='breakTime' />
