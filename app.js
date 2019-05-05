@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react'
 import Title from './title'
 import Button from './button'
 import BtnPlay from './btnPlay'
+import Count from './count'
 
 export default class App extends Component {
   constructor(props) {
@@ -9,8 +10,8 @@ export default class App extends Component {
     this.state = {
       sessionTime: 25,
       breakTime: 5,
-      time :1000,
-      second: Math.round( 990 / 16.67 )
+      time: 1000,
+      second: Math.round(990 / 16.67)
     }
   }
 
@@ -32,17 +33,17 @@ export default class App extends Component {
     console.log('etat => ', event.target.getAttribute('etat'))
   }
 
-oneMinute = (event) => {
-  while(this.state.time > 0) {
-    setInterval( () => this.setState({time : this.state.time -= 100}), 100  )
-  }
+  oneMinute = (event) => {
+    while (this.state.time > 0) {
+      setInterval(() => this.setState({ time: this.state.time -= 100 }), 100)
+    }
     console.log('theEvent come', event)
     const time = this.state.sessionTime * 1000
-    console.log('variable Time' , this.state.time)
+    console.log('variable Time', this.state.time)
   }
 
   addOne = () => {
-    
+    console.log('addOneAction')
   }
 
   render() {
@@ -55,6 +56,7 @@ oneMinute = (event) => {
               <div>
                 <Button btnName='subSessionTime' action={this.handleClick} value='sub' etat='sessionTime' />
                 <Button btnName='addSessionTime' action={this.handleClick} value='add' etat='sessionTime' />
+                <Button btnName='newBtn' action={this.addOne} />
               </div>
               <h2 className="subtitle">
                 {this.state.sessionTime}
@@ -62,6 +64,7 @@ oneMinute = (event) => {
             </div>
 
             <div className="has-text-centered">
+            <Count time={this.state.sessionTime} />
               <div>
                 <Button btnName='subBreakTime' action={this.handleClick} value='sub' etat='breakTime' />
                 <Button btnName='addBreakTime' action={this.handleClick} value='add' etat='breakTime' />
