@@ -41,6 +41,10 @@ oneMinute = (event) => {
     console.log('variable Time' , this.state.time)
   }
 
+  addOne = () => {
+    
+  }
+
   render() {
     return (
       <div className="hero">
