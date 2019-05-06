@@ -2,7 +2,7 @@ import React, { Component, Fragment } from 'react'
 import Title from './title'
 import BtnPlay from './btnPlay'
 import Count from './count'
-import { Button, Drawer } from 'antd'
+import { Button, Drawer, Icon } from 'antd'
 import 'antd/dist/antd.css';
 
 
@@ -19,7 +19,7 @@ export default class App extends Component {
 
   handleClick = (event) => {
   event.preventDefault()
-  console.log(props)
+  console.log(event.currentTarget.dataset)
   this.setState( { sessionTime : this.state.sessionTime += 1})
   }
 
@@ -74,9 +74,15 @@ export default class App extends Component {
                 <Button btnName='newBtn' action={this.addOne} />
                 <Count />
               </div>
-              <h2 className="subtitle">
+            </div>
+            <div>
+            <span onClick={this.handleClick} quoi="LaData">
+            <Icon type="plus-circle"/>
+            </span>
+              <p className="subtitle is-inline" style={{margin:'1em'}}>
                 {this.state.sessionTime}
-              </h2>
+              </p>
+            <Icon type="minus-circle" />
             </div>
 
             <div className="has-text-centered">
