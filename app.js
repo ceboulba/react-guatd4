@@ -1,8 +1,10 @@
 import React, { Component, Fragment } from 'react'
 import Title from './title'
-import Button from './button'
 import BtnPlay from './btnPlay'
 import Count from './count'
+import { Button, Drawer } from 'antd'
+import 'antd/dist/antd.css';
+
 
 export default class App extends Component {
   constructor(props) {
@@ -16,21 +18,9 @@ export default class App extends Component {
   }
 
   handleClick = (event) => {
-    event.target.getAttribute('etat') === 'sessionTime' ?
-      event.target.value === 'add' ?
-        this.setState({ sessionTime: this.state.sessionTime += 1 })
-        : this.state.sessionTime > 1 ?
-          this.setState({ sessionTime: this.state.sessionTime -= 1 })
-          : null
-      : event.target.value === 'add' ?
-        this.setState({ breakTime: this.state.breakTime += 1 })
-        : this.state.breakTime > 1 ?
-          this.setState({ breakTime: this.state.breakTime -= 1 })
-          : null
-
-    console.log('in handleClick')
-    console.log('event => ', event.target.value)
-    console.log('etat => ', event.target.getAttribute('etat'))
+  event.preventDefault()
+  console.log(props)
+  this.setState( { sessionTime : this.state.sessionTime += 1})
   }
 
   oneMinute = (event) => {
@@ -46,15 +36,40 @@ export default class App extends Component {
     console.log('addOneAction')
   }
 
+   showDrawer = () => {
+    this.setState({
+      visible: true,
+    });
+  };
+
+  onClose = () => {
+    this.setState({
+      visible: false,
+    });
+  };
+
   render() {
     return (
       <div className="hero">
         <div className="hero-body">
           <div className="container has-text-centered">
+            <Drawer
+              title="Basic Drawer"
+              placement={this.state.placement}
+              closable={false}
+              onClose={this.onClose}
+              visible={this.state.visible}
+            >
+              <p>Some contents...</p>
+              <p>Some contents...</p>
+              <p>Some contents...</p>
+            </Drawer>
             <Title title="Fcc Pomodoro Clock" />
             <div className="has-text-centered">
               <div>
-                <Button btnName='subSessionTime' action={this.handleClick} value='sub' etat='sessionTime' />
+                <Button type='primary' etat='sessionTime' onClick={this.showDrawer}>
+                  bim
+                </Button>
                 <Button btnName='addSessionTime' action={this.handleClick} value='add' etat='sessionTime' />
                 <Button btnName='newBtn' action={this.addOne} />
                 <Count />

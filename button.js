@@ -1,9 +1,11 @@
 import React from 'react'
+import {Button} from 'antd'
+import 'antd/dist/antd.css';
 
-export default ({ btnName, action, value, etat }) => {
+export default ({ btnName }) => {
   return (
-    <button className="button" onClick={action} value={value} etat={etat}>
+    <Button>
       {btnName}
-    </button>
+    </Button>
   )
 }
