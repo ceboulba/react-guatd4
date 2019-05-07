@@ -1,6 +1,12 @@
 import React, { Component, Fragment } from 'react'
-import { Layout, Content, Row, Col } from 'antd'
+// import { Header, Layout, Content, Row, Col } from 'antd'
+import Title from './title'
 import 'antd/dist/antd.css';
+import { Layout, Row, Col } from 'antd';
+
+const {
+  Header, Footer, Sider, Content
+} = Layout;
 
 
 export default class App extends Component {
@@ -19,17 +25,16 @@ export default class App extends Component {
 
   render() {
     return (
-      <Fragment>
+      <div>
         <Layout>
-          <Content>
-            <Row>
-              <Col span={12} offset={6}>
-              <h1>title</h1>
-              </Col>
-            </Row>
-          </Content>
+          <Row>
+            <Col span={12} offset={6}>
+              <Title title='Pomodoro Clock' />
+              <Content>Content</Content>
+            </Col>
+          </Row>
         </Layout>
-      </Fragment>
+      </div>
     );
   }
 }
