@@ -2,7 +2,7 @@ import React, { Component, Fragment } from 'react'
 // import { Header, Layout, Content, Row, Col } from 'antd'
 import Title from './title'
 import 'antd/dist/antd.css';
-import { Layout, Row, Col } from 'antd';
+import { Button, Icon, Layout, Row, Col } from 'antd';
 
 const {
   Header, Footer, Sider, Content
@@ -30,8 +30,19 @@ export default class App extends Component {
           <Row>
             <Col span={12} offset={6}>
               <Title title='Pomodoro Clock' />
-              <Content>Content</Content>
             </Col>
+          </Row>
+          <Row>
+            <Col>
+              <Button type='primary' onClick={this.handleClick}>
+                <Icon type="plus-circle" />
+              </Button>
+              <p>{this.state.sessionTime}</p>
+              <Button ghost type='primary' onClick={this.handleClick}>
+                <Icon type="minus-circle" />
+              </Button>
+            </Col>
+            
           </Row>
         </Layout>
       </div>
