@@ -18,34 +18,28 @@ export default class App extends Component {
     }
   }
 
-  handleClick = (event) => {
-    event.preventDefault()
-    console.log(event)
-  }
+
 
   render() {
     return (
-      <div>
-        <Layout>
-          <Row>
-            <Col span={12} offset={6}>
-              <Title title='Pomodoro Clock' />
-            </Col>
-          </Row>
-          <Row>
-            <Col>
-              <Button type='primary' onClick={this.handleClick}>
-                <Icon type="plus-circle" />
-              </Button>
-              <p>{this.state.sessionTime}</p>
-              <Button ghost type='primary' onClick={this.handleClick}>
-                <Icon type="minus-circle" />
-              </Button>
-            </Col>
-            
-          </Row>
-        </Layout>
-      </div>
+      <Fragment>
+        <Row className="ant-row">
+          <Col className="ant-col ant-col-12">
+            <h1 className='ant-typography ant-typography-danger'>Pomodoro Clock</h1>
+          </Col>
+          <Col className="ant-col ant-col-6">
+            <h1 className='ant-typography ant-typography-danger'>Pomodoro Clock</h1>
+          </Col>
+          <Col className="ant-col ant-col-3">
+            <h1 className='ant-typography ant-typography-danger'>Pomodoro Clock</h1>
+          </Col>
+        </Row>
+        <Row>
+      <Col span={12} offset={6}>
+        col-12 col-offset-6
+      </Col>
+    </Row>
+      </Fragment>
     );
   }
 }
