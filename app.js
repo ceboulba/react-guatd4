@@ -17,9 +17,8 @@ export default class App extends Component {
     }
   }
 
-  addOne = () => {
-    this.setState({ time: this.state.time + 1 })
-  }
+  // addOne = s  etInterval( ()=>{alert('f')}, 2500)
+
 
 
   render() {
@@ -32,7 +31,7 @@ export default class App extends Component {
         </Row>
         <Row>
         </Row>
-        <button className="button" onClick={this.addOne}>AddOne</button>
+        <button className="button" onClick={}>AddOne</button>
         <p>{this.state.time}</p>
       </Fragment>
     );
