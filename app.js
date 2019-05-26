@@ -10,6 +10,12 @@ export default class App extends Component {
       breakTime: 5,
       time: 0
     }
+    this.addOne = this.addOne.bind(this)
+  }
+
+  addOne = () => {
+    this.setState({time : this.state.time +=1 })
+    // setInterv al( ()=>{alert('BOUM')}, 2500 )
   }
 
   render() {
@@ -23,7 +29,7 @@ export default class App extends Component {
         </div>
         <div>
         </div>
-        <button type="button">AddOne</button>
+        <button type="button" onClick={this.addOne}>AddOne</button>
         <p>{this.state.time}</p>
       </Fragment>
     );
