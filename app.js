@@ -28,7 +28,7 @@ export default class App extends Component {
         </div>
         <div>
         </div>
-        <button type="button" onClick={setInterval(this.addOne(), 2000)}>AddOne</button>
+        <button type="button" onClick={alert('CLICK')}>addOne</button>
         <p>{this.state.time}</p>
       </Fragment>
     );
