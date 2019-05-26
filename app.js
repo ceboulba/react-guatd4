@@ -22,6 +22,7 @@ export default class App extends Component {
       }
       ,1000
     )
+    return
   }
 
   render() {
