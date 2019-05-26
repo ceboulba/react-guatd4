@@ -15,15 +15,15 @@ export default class App extends Component {
   render() {
     return (
       <Fragment>
-        <div className="ant-row">
-          <div className="ant-col ant-col-3">
-            <h1 className='ant-typography ant-typography-danger'>Pomodoro Clock
+        <div className="">
+          <div>
+            <h1>Pomodoro Clock
             </h1>
           </div>
         </div>
         <div>
         </div>
-        <button type="button" className="ant-btn" onClick={}>AddOne</button>
+        <button type="button">AddOne</button>
         <p>{this.state.time}</p>
       </Fragment>
     );
