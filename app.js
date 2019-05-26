@@ -14,7 +14,14 @@ export default class App extends Component {
   }
 
   addOne = () => {
-    this.setState({time : this.state.time +=1 })
+    setInterval(
+      () => {this.state.time < 5 ?
+      this.setState({ time: this.state.time += 1 })
+      : (clearInterval(this.addOne),
+      console.log('STOP'),null  )    
+      }
+      ,1000
+    )
   }
 
   render() {
@@ -28,7 +35,7 @@ export default class App extends Component {
         </div>
         <div>
         </div>
-        <button type="button" onClick={alert('CLICK')}>addOne</button>
+        <button type="button" onClick={this.addOne}>addOne</button>
         <p>{this.state.time}</p>
       </Fragment>
     );
