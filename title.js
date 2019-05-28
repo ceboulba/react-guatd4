@@ -1,3 +1,3 @@
-import React from 'react';
+import React from "react"
 
-export default ({title}) => <h1 className="title has-text-centered"> {title} </h1>
+export default ({ title }) => <h1 className="ant-typography"> {title} </h1>

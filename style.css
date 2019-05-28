@@ -1,12 +1,1 @@
-
-
-* {
-  font-family: Lato;
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-button{
-  padding: .5rem;
-}
+@import "./node_modules/antd/dist/antd.css";
