@@ -13,6 +13,15 @@ export default class App extends Component {
       seconds: 60,
       timeLeft: 100,
     }
+    this.reset = this.reset.bind(this)
+  }
+
+  reset(event) {
+    event.preventDefault()
+    this.setState({
+      sessionLength: 25,
+      breakLength: 5,
+    })
   }
 
   render() {
@@ -61,7 +70,7 @@ export default class App extends Component {
             <Button id="start_stop" type="dashed" shape="round">
               START
             </Button>
-            <Button id="reset" type="dashed" shape="round">
+            <Button id="reset" type="dashed" shape="round" onClick={this.reset}>
               RESET
             </Button>
           </div>
