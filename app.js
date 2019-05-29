@@ -1,6 +1,8 @@
 import React, { Component, Fragment } from "react"
-import Title from "./title"
-import { Card, Button, Row, Col } from "antd"
+import { Card, Button, Row, Col, Typography } from "antd"
+
+const { Title } = Typography
+const { Text } = Typography
 
 export default class App extends Component {
   constructor(props) {
@@ -26,63 +28,106 @@ export default class App extends Component {
 
   render() {
     return (
-      <Fragment>
-        <div className="ant-layout">
-          <div className="ant-layout-header">
-            <Title title="pomodoro Clock" />
-          </div>
-          <div className="ant-layout-content">
-            <div id="break-label" className="ant-typography">
+      <div>
+        <Row type="flex" justify="center">
+          <Title level={2}>Free Code Camp Pomodoro Clock</Title>
+        </Row>
+
+        <Row>
+          <Row type="flex" justify="center">
+            <Title level={3} id="break-label">
               break length
-            </div>
-            <Button
-              id="break-decrement"
-              type="dashed"
-              shape="circle"
-              icon="plus"
-              onClick={() => {
-                this.state.breakLength > 0
-                  ? this.setState({
-                      breakLength: (this.state.breakLength -= 1),
-                    })
-                  : null
-              }}
-            />
-            <Button
-              id="break-increment"
-              type="dashed"
-              shape="circle"
-              icon="minus"
-            />
-            <div id="session-label" className="ant-typography">
+            </Title>
+          </Row>
+
+          <Row type="flex" justify="space-around">
+            <Col>
+              <Button
+                id="break-increment"
+                type="dashed"
+                shape="circle"
+                icon="minus"
+                onClick={event => {
+                  this.state.breakLength > 0
+                    ? this.setState({
+                        breakLength: (this.state.breakLength -= 1),
+                      })
+                    : null
+                }}
+              />
+            </Col>
+            <Col>
+              <Button
+                id="break-decrement"
+                type="dashed"
+                shape="circle"
+                icon="plus"
+                onClick={event => {
+                  this.setState({ breakLength: (this.state.breakLength += 1) })
+                }}
+              />
+            </Col>
+          </Row>
+
+          <Row type="flex" justify="center">
+            <p id="break-length">{this.state.breakLength}</p>
+          </Row>
+        </Row>
+
+        <div>
+          <div>
+            <Title level={3} id="session-label">
               session label
-            </div>
+            </Title>
             <Button
               id="session-decrement"
               type="dashed"
               shape="circle"
               icon="plus"
+              onClick={event => {
+                this.setState({
+                  sessionLength: (this.state.sessionLength += 1),
+                })
+              }}
             />
             <Button
               id="session-increment"
               type="dashed"
               shape="circle"
               icon="minus"
+              onClick={event => {
+                this.state.sessionLength > 0
+                  ? this.setState({
+                      sessionLength: (this.state.sessionLength -= 1),
+                    })
+                  : null
+              }}
             />
-            <p id="break-length">{this.state.breakLength}</p>
             <p id="session-length">{this.state.sessionLength}</p>
             <p id="timer-label">{this.state.timerLabel[0]}</p>
             <p id="timer-left">{Math.floor(this.state.seconds * 1.667)}</p>
             <p id="time-left">{this.state.timeLeft}</p>
-            <Button id="start_stop" type="dashed" shape="round">
-              START
-            </Button>
-            <Button id="reset" type="dashed" shape="round" onClick={this.reset}>
-              RESET
-            </Button>
           </div>
+
+          <Row type="flex" justify="center">
+            <Col span={6}>
+              <Button id="start_stop" type="dashed" shape="round">
+                START
+              </Button>
+            </Col>
+            <Col span={6}>
+              <Button
+                id="reset"
+                type="dashed"
+                shape="round"
+                onClick={this.reset}
+              >
+                RESET
+              </Button>
+            </Col>
+          </Row>
         </div>
-      </Fragment>
+      </div>
     )
   }
 }
