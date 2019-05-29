@@ -40,6 +40,13 @@ export default class App extends Component {
               type="dashed"
               shape="circle"
               icon="plus"
+              onClick={() => {
+                this.state.breakLength > 0
+                  ? this.setState({
+                      breakLength: (this.state.breakLength -= 1),
+                    })
+                  : null
+              }}
             />
             <Button
               id="break-increment"
