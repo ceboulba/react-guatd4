@@ -14,10 +14,22 @@ export default class App extends Component {
       timerLabel: ["ON", "OFF"],
       seconds: 60,
       timeLeft: 100,
+      time: 0,
     }
     this.reset = this.reset.bind(this)
+    this.tick = this.tick.bind(this)
   }
 
+  tick(event) {
+    // event.preventDefault()
+    this.state.time < 3
+      ? setInterval(() => {
+          this.setState({ time: (this.state.time += 1) })
+        }, 1000)
+      : null
+  }
+
+  //remise à zéro des compteurs
   reset(event) {
     event.preventDefault()
     this.setState({
@@ -111,7 +123,12 @@ export default class App extends Component {
 
           <Row type="flex" justify="center">
             <Col span={6}>
-              <Button id="start_stop" type="dashed" shape="round">
+              <Button
+                id="start_stop"
+                type="dashed"
+                shape="round"
+                onClick={this.tick}
+              >
                 START
               </Button>
             </Col>
@@ -125,6 +142,7 @@ export default class App extends Component {
                 RESET
               </Button>
             </Col>
+            <Title>{this.state.time}</Title>
           </Row>
         </div>
       </div>
