@@ -15,6 +15,10 @@ export default class App extends Component {
     }
   }
 
+  timer = () => {
+    console.log('this = ', this)
+  }
+
   render() {
     return (
       <Fragment>
@@ -23,31 +27,35 @@ export default class App extends Component {
             <Title title="pomodoro Clock" />
           </div>
           <div className="ant-layout-content">
-            <div id="break-label" className="ant-typography">
-              break length
+            <div className="container">
+              <div id="break-label" className="ant-typography">
+                break length
+              </div>
+              <Button
+                id="break-decrement"
+                type="dashed"
+                shape="circle"
+                icon="plus"
+                onClick={event => {
+                  this.setState({ breakLength: (this.state.breakLength += 1) })
+                }}
+              />
+              <Button
+                id="break-increment"
+                type="dashed"
+                shape="circle"
+                icon="minus"
+                onClick={event => {
+                  this.state.breakLength > 0
+                    ? this.setState({
+                        breakLength: (this.state.breakLength -= 1),
+                      })
+                    : null
+                }}
+              />
+              <p id="break-length">{this.state.breakLength}</p>
             </div>
-            <Button
-              id="break-decrement"
-              type="dashed"
-              shape="circle"
-              icon="plus"
-              onClick={event => {
-                this.setState({ breakLength: (this.state.breakLength += 1) })
-              }}
-            />
-            <Button
-              id="break-increment"
-              type="dashed"
-              shape="circle"
-              icon="minus"
-              onClick={event => {
-                this.state.breakLength > 0
-                  ? this.setState({
-                      breakLength: (this.state.breakLength -= 1),
-                    })
-                  : null
-              }}
-            />
+
             <div id="session-label" className="ant-typography">
               session label
             </div>
@@ -75,7 +83,6 @@ export default class App extends Component {
                   : null
               }}
             />
-            <p id="break-length">{this.state.breakLength}</p>
             <p id="session-length">{this.state.sessionLength}</p>
             <p id="timer-label">{this.state.timerLabel[0]}</p>
             <p id="timer-left">{Math.floor(this.state.seconds * 1.667)}</p>
