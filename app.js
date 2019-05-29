@@ -15,7 +15,7 @@ export default class App extends Component {
     }
   }
 
-  timer = () => {
+  this.timer = () => {
     console.log('this = ', this)
   }
 
