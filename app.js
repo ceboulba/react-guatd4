@@ -1,6 +1,6 @@
-import React, { Component, Fragment } from "react"
-import Title from "./title"
-import { Card, Button, Row, Col } from "antd"
+import React, { Component, Fragment } from 'react'
+import Title from './title'
+import { Card, Button, Row, Col } from 'antd'
 
 export default class App extends Component {
   constructor(props) {
@@ -9,7 +9,7 @@ export default class App extends Component {
       sessionLength: 25,
       breakLength: 5,
       time: 0,
-      timerLabel: ["ON", "OFF"],
+      timerLabel: ['ON', 'OFF'],
       seconds: 60,
       timeLeft: 100,
     }
@@ -31,6 +31,13 @@ export default class App extends Component {
               type="dashed"
               shape="circle"
               icon="plus"
+              onCLick={() => {
+                this.state.breakLength > 0
+                  ? this.setState({
+                      breakLength: this.state.breakLength--,
+                    })
+                  : null
+              }}
             />
             <Button
               id="break-increment"
