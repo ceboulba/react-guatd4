@@ -1,15 +1,5 @@
 import React, { Component, Fragment } from 'react'
-import {
-  Card,
-  Button,
-  Row,
-  Col,
-  Layout,
-  Content,
-  Header,
-  Sider,
-  Footer,
-} from 'antd'
+import { Card, Button, Row, Col } from 'antd'
 
 export default class App extends Component {
   constructor(props) {
@@ -27,37 +17,48 @@ export default class App extends Component {
   render() {
     return (
       <div>
-        <div>
-          <div>
-            <h1>Header</h1>
-          </div>
-          <div>
+        <Row type="flex" justify="center">
+          <h1>Free Code Camp Pomodoro Clock</h1>
+        </Row>
+
+        <Row>
+          <Row type="flex" justify="center">
             <div id="break-label">break length</div>
-            <Button
-              id="break-decrement"
-              type="dashed"
-              shape="circle"
-              icon="plus"
-              onClick={event => {
-                this.setState({ breakLength: (this.state.breakLength += 1) })
-              }}
-            />
-            <Button
-              id="break-increment"
-              type="dashed"
-              shape="circle"
-              icon="minus"
-              onClick={event => {
-                this.state.breakLength > 0
-                  ? this.setState({
-                      breakLength: (this.state.breakLength -= 1),
-                    })
-                  : null
-              }}
-            />
+          </Row>
+
+          <Row type="flex" justify="space-around">
+            <Col>
+              <Button
+                id="break-increment"
+                type="dashed"
+                shape="circle"
+                icon="minus"
+                onClick={event => {
+                  this.state.breakLength > 0
+                    ? this.setState({
+                        breakLength: (this.state.breakLength -= 1),
+                      })
+                    : null
+                }}
+              />
+            </Col>
+            <Col>
+              <Button
+                id="break-decrement"
+                type="dashed"
+                shape="circle"
+                icon="plus"
+                onClick={event => {
+                  this.setState({ breakLength: (this.state.breakLength += 1) })
+                }}
+              />
+            </Col>
+          </Row>
+
+          <Row type="flex" justify="center">
             <p id="break-length">{this.state.breakLength}</p>
-          </div>
-        </div>
+          </Row>
+        </Row>
 
         <div>
           <div>
@@ -91,16 +92,19 @@ export default class App extends Component {
             <p id="timer-left">{Math.floor(this.state.seconds * 1.667)}</p>
             <p id="time-left">{this.state.timeLeft}</p>
           </div>
-          <div>
-            <div className="container">
+
+          <Row type="flex" justify="center">
+            <Col span={6}>
               <Button id="start_stop" type="dashed" shape="round">
                 START
               </Button>
+            </Col>
+            <Col span={6}>
               <Button id="reset" type="dashed" shape="round">
                 RESET
               </Button>
-            </div>
-          </div>
+            </Col>
+          </Row>
         </div>
       </div>
     )
