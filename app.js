@@ -31,12 +31,8 @@ export default class App extends Component {
               type="dashed"
               shape="circle"
               icon="plus"
-              onCLick={() => {
-                this.state.breakLength > 0
-                  ? this.setState({
-                      breakLength: this.state.breakLength--,
-                    })
-                  : null
+              onClick={event => {
+                this.setState({ breakLength: (this.state.breakLength += 1) })
               }}
             />
             <Button
@@ -44,6 +40,13 @@ export default class App extends Component {
               type="dashed"
               shape="circle"
               icon="minus"
+              onClick={event => {
+                this.state.breakLength > 0
+                  ? this.setState({
+                      breakLength: (this.state.breakLength -= 1),
+                    })
+                  : null
+              }}
             />
             <div id="session-label" className="ant-typography">
               session label
@@ -53,12 +56,24 @@ export default class App extends Component {
               type="dashed"
               shape="circle"
               icon="plus"
+              onClick={event => {
+                this.setState({
+                  sessionLength: (this.state.sessionLength += 1),
+                })
+              }}
             />
             <Button
               id="session-increment"
               type="dashed"
               shape="circle"
               icon="minus"
+              onClick={event => {
+                this.state.sessionLength > 0
+                  ? this.setState({
+                      sessionLength: (this.state.sessionLength -= 1),
+                    })
+                  : null
+              }}
             />
             <p id="break-length">{this.state.breakLength}</p>
             <p id="session-length">{this.state.sessionLength}</p>
