@@ -23143,4 +23143,7 @@ div.ant-typography-edit-content {
 }
 
 
-/*# sourceMappingURL=antd.css.map*/
+/*# sourceMappingURL=antd.css.map*/.col {
+  display: flex;
+  justify-content: center;
+}

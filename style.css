@@ -1,1 +1,6 @@
-@import "./node_modules/antd/dist/antd.css";
+@import './node_modules/antd/dist/antd.css';
+
+.col {
+  display: flex;
+  justify-content: center;
+}
