@@ -31,7 +31,7 @@ export default class App extends Component {
 
   //Tick Every 1 second
   tick(event) {
-    this.state.time < this.state.sessionLength && this.state.etat === 'Start'
+    this.state.time < this.state.sessionLength && this.state.etat !== 'Start'
       ? this.setState({ time: (this.state.time += 1) })
       : clearInterval(this.tick)
   }
