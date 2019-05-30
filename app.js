@@ -11,7 +11,7 @@ export default class App extends Component {
       sessionLength: 25,
       breakLength: 5,
       time: 0,
-      timerLabel: '" Off "',
+      timerLabel: 'Off',
       seconds: 60,
       timeLeft: 100,
       time: 0,
@@ -24,17 +24,16 @@ export default class App extends Component {
 
   //handle timerLabel
   handleTimerLabel() {
-    this.state.etat === 'On'
-      ? this.setState({ etat: 'Start' })
-      : this.setState({ etat: 'Pause' })
+    this.state.etat === 'Start'
+      ? this.setState({ etat: 'Pause' })
+      : this.setState({ etat: 'Start' })
   }
 
   //Tick Every 1 second
   tick(event) {
-    const etat = '" On "'
-    this.state.time < this.state.sessionLength
+    this.state.time < this.state.sessionLength && this.state.etat === 'Start'
       ? this.setState({ time: (this.state.time += 1) })
-      : null
+      : clearInterval(this.tick)
   }
 
   //remise à zéro des compteurs
