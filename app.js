@@ -11,22 +11,29 @@ export default class App extends Component {
       sessionLength: 25,
       breakLength: 5,
       time: 0,
-      timerLabel: ['ON', 'OFF'],
+      timerLabel: '" Off "',
       seconds: 60,
       timeLeft: 100,
       time: 0,
+      etat: 'Start',
     }
     this.reset = this.reset.bind(this)
     this.tick = this.tick.bind(this)
+    this.handleTimerLabel = this.handleTimerLabel.bind(this)
+  }
+
+  //handle timerLabel
+  handleTimerLabel() {
+    this.state.etat === 'On'
+      ? this.setState({ etat: 'Start' })
+      : this.setState({ etat: 'Pause' })
   }
 
   //Tick Every 1 second
   tick(event) {
-    // event.preventDefault()
-    this.state.time < 3
-      ? setInterval(() => {
-          this.setState({ time: (this.state.time += 1) })
-        }, 1000)
+    const etat = '" On "'
+    this.state.time < this.state.sessionLength
+      ? this.setState({ time: (this.state.time += 1) })
       : null
   }
 
@@ -36,107 +43,112 @@ export default class App extends Component {
     this.setState({
       sessionLength: 25,
       breakLength: 5,
+      time: 0,
     })
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.tick)
   }
 
   render() {
     return (
       <Fragment>
         <Row type="flex" justify="center">
-          <Title level={2}>Free Code Camp Pomodoro Clock</Title>
-        </Row>
-
-        <Row>
-          <Row type="flex" justify="center">
-            <Title level={3} id="break-label">
-              Break length
-            </Title>
-          </Row>
-
-          <Row type="flex" justify="center">
-            <Col span={4} className="col">
-              <Button
-                id="break-increment"
-                type="dashed"
-                shape="circle"
-                icon="minus"
-                onClick={event => {
-                  this.state.breakLength > 1
-                    ? this.setState({
-                        breakLength: (this.state.breakLength -= 1),
-                      })
-                    : null
-                }}
-              />
-            </Col>
-            <Col span={4} className="col">
-              <Button
-                id="break-decrement"
-                type="dashed"
-                shape="circle"
-                icon="plus"
-                onClick={event => {
-                  this.setState({
-                    breakLength: (this.state.breakLength += 1),
-                  })
-                }}
-              />
-            </Col>
-          </Row>
-
-          <Row type="flex" justify="center">
-            <Title level={3} id="break-length">
-              {this.state.breakLength}
-            </Title>
-          </Row>
-        </Row>
-
-        <Row type="flex" justify="center">
-          <Title level={3} id="session-label">
-            Session label
+          <Title level={3} style={{ margin: '2rem' }}>
+            Free Code Camp Pomodoro Clock
           </Title>
         </Row>
 
-        <Row type="flex" justify="center">
-          <Col span={4} className="col">
-            <Button
-              id="session-decrement"
-              type="dashed"
-              shape="circle"
-              icon="plus"
-              onClick={event => {
-                this.setState({
-                  sessionLength: (this.state.sessionLength += 1),
-                })
-              }}
-            />
+        <Row>
+          <Col span={12}>
+            <Card style={{ margin: '1rem' }} title="Break length">
+              <Row type="flex" justify="center">
+                <Title level={3} id="break-length">
+                  {this.state.breakLength}
+                </Title>
+              </Row>
+              <Row type="flex" justify="center">
+                <Col span={6} className="col">
+                  <Button
+                    id="break-increment"
+                    type="dashed"
+                    shape="circle"
+                    icon="minus"
+                    onClick={event => {
+                      this.state.breakLength > 1
+                        ? this.setState({
+                            breakLength: (this.state.breakLength -= 1),
+                          })
+                        : null
+                    }}
+                  />
+                </Col>
+                <Col span={6} className="col">
+                  <Button
+                    id="break-decrement"
+                    type="dashed"
+                    shape="circle"
+                    icon="plus"
+                    onClick={event => {
+                      this.setState({
+                        breakLength: (this.state.breakLength += 1),
+                      })
+                    }}
+                  />
+                </Col>
+              </Row>
+            </Card>
           </Col>
-          <Col span={4} className="col">
-            <Button
-              id="session-increment"
-              type="dashed"
-              shape="circle"
-              icon="minus"
-              onClick={event => {
-                this.state.sessionLength > 1
-                  ? this.setState({
-                      sessionLength: (this.state.sessionLength -= 1),
-                    })
-                  : null
-              }}
-            />
+
+          <Col span={12}>
+            <Card style={{ margin: '1rem' }} title="Session label">
+              <Row type="flex" justify="center">
+                <Col>
+                  <Title level={3} id="session-length">
+                    {this.state.sessionLength}
+                  </Title>
+                </Col>
+              </Row>
+              <Row type="flex" justify="center">
+                <Col span={6} className="col">
+                  <Button
+                    id="session-increment"
+                    type="dashed"
+                    shape="circle"
+                    icon="minus"
+                    onClick={event => {
+                      this.state.sessionLength > 1
+                        ? this.setState({
+                            sessionLength: (this.state.sessionLength -= 1),
+                          })
+                        : null
+                    }}
+                  />
+                </Col>
+                <Col span={6} className="col">
+                  <Button
+                    id="session-decrement"
+                    type="dashed"
+                    shape="circle"
+                    icon="plus"
+                    onClick={event => {
+                      this.setState({
+                        sessionLength: (this.state.sessionLength += 1),
+                      })
+                    }}
+                  />
+                </Col>
+              </Row>
+            </Card>
           </Col>
         </Row>
-        <Row type="flex" justify="center">
-          <Col>
-            <Title level={3} id="session-length">
-              {this.state.sessionLength}
-            </Title>
-          </Col>
-        </Row>
+
         <Row type="flex" justify="center" gutter={16}>
           <Col>
-            <p id="timer-label">{this.state.timerLabel[0]}</p>
+            <Title level={2} id="timer-label">
+              {this.state.timerLabel}
+            </Title>
           </Col>
           <Col>
             <p id="timer-left">{Math.floor(this.state.seconds * 1.667)}</p>
@@ -152,13 +164,16 @@ export default class App extends Component {
               id="start_stop"
               type="dashed"
               shape="round"
-              onClick={this.tick}>
-              START
+              onClick={() => {
+                setInterval(this.tick, 1000)
+                this.handleTimerLabel()
+              }}>
+              {this.state.etat}
             </Button>
           </Col>
           <Col span={6}>
             <Button id="reset" type="dashed" shape="round" onClick={this.reset}>
-              RESET
+              Reset
             </Button>
           </Col>
           <Title>{this.state.time}</Title>
