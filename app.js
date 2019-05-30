@@ -1,5 +1,5 @@
-import React, { Component, Fragment } from 'react'
-import { Card, Button, Row, Col, Typography } from 'antd'
+import React, { Component, Fragment } from "react"
+import { Card, Button, Row, Col, Typography } from "antd"
 
 const { Title } = Typography
 const { Text } = Typography
@@ -11,29 +11,34 @@ export default class App extends Component {
       sessionLength: 25,
       breakLength: 5,
       time: 0,
-      timerLabel: 'Off',
+      timerLabel: "Off",
       seconds: 60,
       timeLeft: 100,
       time: 0,
-      etat: 'Start',
+      etat: "Start",
     }
     this.reset = this.reset.bind(this)
     this.tick = this.tick.bind(this)
     this.handleTimerLabel = this.handleTimerLabel.bind(this)
+    this.play = this.play.bind(this)
   }
 
   //handle timerLabel
   handleTimerLabel() {
-    this.state.etat === 'Start'
-      ? this.setState({ etat: 'Pause' })
-      : this.setState({ etat: 'Start' })
+    this.state.etat === "Start"
+      ? this.setState({ etat: "Pause" })
+      : this.setState({ etat: "Start" })
   }
 
   //Tick Every 1 second
   tick(event) {
-    this.state.time < this.state.sessionLength && this.state.etat !== 'Start'
+    this.state.time < this.state.sessionLength && this.state.etat === "Start"
       ? this.setState({ time: (this.state.time += 1) })
-      : clearInterval(this.tick)
+      : clearInterval(this.play)
+  }
+
+  play() {
+    setInterval(this.tick, 1000)
   }
 
   //remise à zéro des compteurs
@@ -54,14 +59,14 @@ export default class App extends Component {
     return (
       <Fragment>
         <Row type="flex" justify="center">
-          <Title level={3} style={{ margin: '2rem' }}>
+          <Title level={3} style={{ margin: "2rem" }}>
             Free Code Camp Pomodoro Clock
           </Title>
         </Row>
 
         <Row>
           <Col span={12}>
-            <Card style={{ margin: '1rem' }} title="Break length">
+            <Card style={{ margin: "1rem" }} title="Break length">
               <Row type="flex" justify="center">
                 <Title level={3} id="break-length">
                   {this.state.breakLength}
@@ -101,7 +106,7 @@ export default class App extends Component {
           </Col>
 
           <Col span={12}>
-            <Card style={{ margin: '1rem' }} title="Session label">
+            <Card style={{ margin: "1rem" }} title="Session label">
               <Row type="flex" justify="center">
                 <Col>
                   <Title level={3} id="session-length">
@@ -164,9 +169,10 @@ export default class App extends Component {
               type="dashed"
               shape="round"
               onClick={() => {
-                setInterval(this.tick, 1000)
+                this.play()
                 this.handleTimerLabel()
-              }}>
+              }}
+            >
               {this.state.etat}
             </Button>
           </Col>
