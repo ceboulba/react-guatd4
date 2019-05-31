@@ -16,11 +16,13 @@ export default class App extends Component {
       timeLeft: 100,
       time: 0,
       etat: "Start",
+      on: false,
     }
     this.reset = this.reset.bind(this)
     this.tick = this.tick.bind(this)
     this.handleTimerLabel = this.handleTimerLabel.bind(this)
     this.play = this.play.bind(this)
+    this.stop = this.stop.bind(this)
   }
 
   //handle timerLabel
@@ -39,6 +41,11 @@ export default class App extends Component {
 
   play() {
     setInterval(this.tick, 1000)
+    this.setState({ on: true })
+  }
+
+  stop() {
+    clearInterval(this.play)
   }
 
   //remise à zéro des compteurs
@@ -169,7 +176,7 @@ export default class App extends Component {
               type="dashed"
               shape="round"
               onClick={() => {
-                this.play()
+                this.state.on === false ? this.play() : this.stop()
                 this.handleTimerLabel()
               }}
             >
