@@ -63,6 +63,7 @@ export default class App extends Component {
             Free Code Camp Pomodoro Clock
           </Title>
         </Row>
+
         <Row>
           <Col span={12}>
             <Card
@@ -108,6 +109,7 @@ export default class App extends Component {
               </Row>
             </Card>
           </Col>
+
           <Col span={12}>
             <Card
               style={{ margin: '1rem' }}
@@ -155,6 +157,7 @@ export default class App extends Component {
             </Card>
           </Col>
         </Row>
+
         <Row type="flex" justify="center">
           <Col span={6} style={{ textAlign: 'center' }}>
             <Card>
