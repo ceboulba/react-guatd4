@@ -35,7 +35,9 @@ export default class App extends Component {
 
   play() {
     this.myInterval = setInterval(() => {
-      this.setState({ elapsedTime: (this.state.elapsedTime -= 1) })
+      this.state.elapsedTime > 0
+        ? this.setState({ elapsedTime: (this.state.elapsedTime -= 1) })
+        : clearInterval(this.myInterval)
     }, 1000)
     this.setState({ etat: true })
   }
@@ -198,7 +200,7 @@ export default class App extends Component {
           </Col>
           <Col span={8}>
             <Text id="timer-label" style={{ fontSize: "2rem" }}>
-              {this.state.etat}
+              {this.state.etat === true ? "running" : "stopped"}
             </Text>
           </Col>
           <Col span={8}>
