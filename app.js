@@ -51,7 +51,7 @@ export default class App extends Component {
     this.setState({
       sessionLength: 25,
       breakLength: 5,
-      elapsedTime: '25:00',
+      elapsedTime: this.state.sessionLength,
     })
   }
 
