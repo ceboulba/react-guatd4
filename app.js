@@ -11,7 +11,7 @@ export default class App extends Component {
       sessionLength: 25,
       breakLength: 5,
       time: 0,
-      timerLabel: "Off",
+      //timerLabel: "Off",
       seconds: 60,
       timeLeft: 100,
       time: 0,
@@ -41,7 +41,7 @@ export default class App extends Component {
 
   play() {
     setInterval(this.tick, 1000)
-    this.setState({ on: true })
+    this.setState({ etat: "Pause" })
   }
 
   stop() {
@@ -176,7 +176,7 @@ export default class App extends Component {
               type="dashed"
               shape="round"
               onClick={() => {
-                this.state.on === false ? this.play() : this.stop()
+                this.state.etat === "Start" ? this.play() : this.stop()
                 this.handleTimerLabel()
               }}
             >
