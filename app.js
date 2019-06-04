@@ -55,19 +55,14 @@ export default class App extends Component {
     })
   }
 
-  // componentWillUnmount() {
-  //   clearInterval(this.tick)
-  // }
-
   render() {
     return (
       <Fragment>
         <Row type="flex" justify="center">
-          <Title level={3} style={{ margin: '2rem' }}>
+          <Title level={1} style={{ margin: '2rem', fontSize: '1.5rem' }}>
             Free Code Camp Pomodoro Clock
           </Title>
         </Row>
-
         <Row>
           <Col span={12}>
             <Card
@@ -75,9 +70,9 @@ export default class App extends Component {
               title="Break length"
               id="break-label">
               <Row type="flex" justify="center">
-                <Title level={3} id="break-length">
+                <Text style={{ fontSize: '3rem' }} id="break-length">
                   {this.state.breakLength}
-                </Title>
+                </Text>
               </Row>
               <Row type="flex" justify="center">
                 <Col span={6} className="col">
@@ -113,7 +108,6 @@ export default class App extends Component {
               </Row>
             </Card>
           </Col>
-
           <Col span={12}>
             <Card
               style={{ margin: '1rem' }}
@@ -121,9 +115,9 @@ export default class App extends Component {
               id="session-label">
               <Row type="flex" justify="center">
                 <Col>
-                  <Title level={3} id="session-length">
+                  <Text style={{ fontSize: '3rem' }} id="session-length">
                     {this.state.sessionLength}
-                  </Title>
+                  </Text>
                 </Col>
               </Row>
               <Row type="flex" justify="center">
@@ -161,17 +155,30 @@ export default class App extends Component {
             </Card>
           </Col>
         </Row>
-
         <Row type="flex" justify="center">
-          <Col>
-            <Title level={4} id="time-left">
-              {this.state.elapsedTime}
-            </Title>
+          <Col span={6} style={{ textAlign: 'center' }}>
+            <Card>
+              <Row>
+                <Col>
+                  <Text>Session</Text>
+                </Col>
+              </Row>
+              <Row>
+                <Col>
+                  <Text
+                    style={{ fontSize: '2rem', fontWeight: 'bold' }}
+                    level={1}
+                    id="time-left">
+                    {this.state.elapsedTime}
+                  </Text>
+                </Col>
+              </Row>
+            </Card>
           </Col>
         </Row>
 
-        <Row type="flex" justify="center">
-          <Col span={6} className="col">
+        <Row type="flex" justify="center" style={{ textAlign: 'center' }}>
+          <Col span={8}>
             <Button
               id="start_stop"
               type="dashed"
@@ -184,13 +191,15 @@ export default class App extends Component {
               {this.state.etat}
             </Button>
           </Col>
-          <Col span={6} className="col">
+          <Col span={8}>
+            <Text id="timer-label" style={{ fontSize: '2rem' }}>
+              {this.state.etat}
+            </Text>
+          </Col>
+          <Col span={8}>
             <Button id="reset" type="dashed" shape="round" onClick={this.reset}>
               Reset
             </Button>
-          </Col>
-          <Col>
-            <Text id="timer-label">{this.state.etat}</Text>
           </Col>
         </Row>
       </Fragment>
