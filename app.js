@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from "react"
 import { Card, Button, Row, Col, Typography } from "antd"
+import AppTitle from "./components/appTitle"
 
 const { Title } = Typography
 const { Text } = Typography
@@ -23,6 +24,12 @@ export default class App extends Component {
     this.handleTimerLabel = this.handleTimerLabel.bind(this)
     this.play = this.play.bind(this)
     this.stop = this.stop.bind(this)
+    this.numHandler = this.numHandler.bind(this)
+  }
+
+  numHandler(event) {
+    const ec = event
+    console.log(ec)
   }
 
   //handle timerLabel
@@ -65,12 +72,12 @@ export default class App extends Component {
   render() {
     return (
       <Fragment>
+        <AppTitle />
         <Row type="flex" justify="center">
           <Title level={3} style={{ margin: "2rem" }}>
             Free Code Camp Pomodoro Clock
           </Title>
         </Row>
-
         <Row>
           <Col span={12}>
             <Card style={{ margin: "1rem" }} title="Break length">
@@ -142,11 +149,14 @@ export default class App extends Component {
                     id="session-decrement"
                     type="dashed"
                     shape="circle"
+                    target="session-decrement"
                     icon="plus"
+                    data={this.state.sessionLength}
                     onClick={event => {
                       this.setState({
                         sessionLength: (this.state.sessionLength += 1),
                       })
+                      this.numHandler(event)
                     }}
                   />
                 </Col>
@@ -154,7 +164,6 @@ export default class App extends Component {
             </Card>
           </Col>
         </Row>
-
         <Row type="flex" justify="center" gutter={16}>
           <Col>
             <Title level={2} id="timer-label">
@@ -168,16 +177,15 @@ export default class App extends Component {
             <p id="time-left">{this.state.timeLeft}</p>
           </Col>
         </Row>
-
         <Row type="flex" justify="center">
           <Col span={6}>
             <Button
               id="start_stop"
               type="dashed"
               shape="round"
-              onClick={() => {
+              onClick={e => {
                 this.state.etat === "Start" ? this.play() : this.stop()
-                this.handleTimerLabel()
+                this.handleTimerLabel(e)
               }}
             >
               {this.state.etat}
