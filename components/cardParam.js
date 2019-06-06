@@ -13,20 +13,19 @@ const CardParam = props => {
         title={props.title}
         id={props.id}
         style={{ textAlign: 'center' }}>
-        <Paragraph style={{ fontSize: '3rem', margin: 0 }} id={props.id}>
+        <Title style={{ fontSize: '3rem', margin: 0 }} id={props.titleId}>
           {props.num}
-        </Paragraph>
+        </Title>
         <Button
-          id="break-decrement"
           type="dashed"
           shape="circle"
           icon="minus"
           style={{
             margin: '0 1em',
           }}
+          onClick={props.subTime}
         />
         <Button
-          id="break-increment"
           type="dashed"
           shape="circle"
           icon="plus"
