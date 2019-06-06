@@ -3,6 +3,7 @@ import { Card, Button, Row, Col, Typography } from 'antd'
 import AppName from './components/appName'
 import CardParam from './components/cardParam'
 import TimerSecond from './components/timerSecond'
+import Paragraph from 'antd/lib/skeleton/Paragraph'
 
 const { Title } = Typography
 const { Text } = Typography
@@ -112,13 +113,14 @@ export default class App extends Component {
             />
           </Col>
         </Row>
+
         <Row type="flex" justify="center">
           <Col span={6} style={{ textAlign: 'center' }}>
+            <Text style>Session</Text>
+            <TimerSecond second={this.state.sessionLength} />
             <Card>
               <Row>
-                <Col>
-                  <Text>Session</Text>
-                </Col>
+                <Col />
               </Row>
               <Row>
                 <Col>
@@ -133,6 +135,7 @@ export default class App extends Component {
             </Card>
           </Col>
         </Row>
+
         <Row type="flex" justify="center" style={{ textAlign: 'center' }}>
           <Col span={8}>
             <Button

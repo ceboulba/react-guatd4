@@ -5,9 +5,13 @@ const { Title } = Typography
 const { Text } = Typography
 
 const TimerSecond = props => {
+  const minutes = '25'
+  const second = '00'
   return (
     <Fragment>
-      <Title>{Props.second}</Title>
+      <Title>
+        {minutes}:{second}
+      </Title>
     </Fragment>
   )
 }
