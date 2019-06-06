@@ -6,22 +6,18 @@ const { Text } = Typography
 
 const AppName = props => {
   return (
-    <Row
-      type="flex"
-      justify="center"
-      style={{
-        margin: '3rem',
-        textAlign: 'center',
-      }}>
-      <Col>
-        <Title
-          style={{
-            fontSize: 'rem',
-          }}>
-          Free Code Camp Pomodoro Clock
-        </Title>
-      </Col>
-    </Row>
+    <Fragment>
+      <Row
+        type="flex"
+        justify="center"
+        style={{
+          margin: '3rem',
+        }}>
+        <Col>
+          <Title>Free Code Camp Pomodoro Clock</Title>
+        </Col>
+      </Row>
+    </Fragment>
   )
 }
 

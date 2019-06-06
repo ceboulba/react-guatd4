@@ -3,36 +3,40 @@ import { Row, Col, Typography, Card, Button } from 'antd'
 
 const { Title } = Typography
 const { Text } = Typography
+const { Paragraph } = Typography
 
 const CardParam = props => {
   return (
-    <Card style={{ margin: '1rem' }} title={props.title}>
-      <Row type="flex" justify="center">
-        <Text style={{ fontSize: '3rem' }} id="break-length">
+    <Fragment>
+      <Card
+        style={{ margin: '1rem' }}
+        title={props.title}
+        id={props.id}
+        style={{ textAlign: 'center' }}>
+        <Paragraph style={{ fontSize: '3rem', margin: 0 }} id={props.id}>
           {props.num}
-        </Text>
-      </Row>
-
-      <Row type="flex" justify="center">
-        <Col span={6} className="col">
-          <Button
-            id="break-decrement"
-            type="dashed"
-            shape="circle"
-            icon="minus"
-          />
-        </Col>
-
-        <Col span={6} className="col">
-          <Button
-            id="break-increment"
-            type="dashed"
-            shape="circle"
-            icon="plus"
-          />
-        </Col>
-      </Row>
-    </Card>
+        </Paragraph>
+        <Button
+          id="break-decrement"
+          type="dashed"
+          shape="circle"
+          icon="minus"
+          style={{
+            margin: '0 1em',
+          }}
+        />
+        <Button
+          id="break-increment"
+          type="dashed"
+          shape="circle"
+          icon="plus"
+          style={{
+            margin: '0 1em',
+          }}
+          onClick={props.addTime}
+        />
+      </Card>
+    </Fragment>
   )
 }
 

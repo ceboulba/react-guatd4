@@ -1,5 +1,7 @@
-import React, { Component, Fragment } from "react"
-import { Card, Button, Row, Col, Typography } from "antd"
+import React, { Component, Fragment } from 'react'
+import { Card, Button, Row, Col, Typography } from 'antd'
+import AppName from './components/appName'
+import CardParam from './components/cardParam'
 
 const { Title } = Typography
 const { Text } = Typography
@@ -17,13 +19,23 @@ export default class App extends Component {
     this.reset = this.reset.bind(this)
     this.play = this.play.bind(this)
     this.stop = this.stop.bind(this)
+    this.addTime = this.addTime.bind(this)
+  }
+
+  //function AddTime
+  addTime() {
+    this.state.sessionLength < 60
+      ? this.setState({
+          sessionLength: (this.state.sessionLength += 1),
+        })
+      : null
   }
 
   //handle timerLabel
   handleTimerLabel() {
-    this.state.etat === "Start"
-      ? this.setState({ etat: "Pause" })
-      : this.setState({ etat: "Start" })
+    this.state.etat === 'Start'
+      ? this.setState({ etat: 'Pause' })
+      : this.setState({ etat: 'Start' })
   }
 
   //Tick Every 1 second
@@ -62,21 +74,41 @@ export default class App extends Component {
   render() {
     return (
       <Fragment>
-        <Row type="flex" justify="center">
-          <Title level={1} style={{ margin: "2rem", fontSize: "1.5rem" }}>
+        <AppName />
+        <Row gutter={25}>
+          <Col span={12}>
+            <CardParam
+              title="Break length"
+              id="break-length"
+              num={this.state.breakLength}
+              quoi="breakLength"
+              addTime={this.addTime}
+            />
+          </Col>
+          <Col span={12}>
+            <CardParam
+              title="Session length"
+              id="session-length"
+              num={this.state.sessionLength}
+              quoi="sessionLength"
+              addTime={this.addTime}
+            />
+          </Col>
+        </Row>
+        {/* <Row type="flex" justify="center">
+          <Title level={1} style={{ margin: '2rem', fontSize: '1.5rem' }}>
             Free Code Camp Pomodoro Clock
           </Title>
-        </Row>
+        </Row> */}
 
         <Row>
           <Col span={12}>
             <Card
-              style={{ margin: "1rem" }}
+              style={{ margin: '1rem' }}
               title="Break length"
-              id="break-label"
-            >
+              id="break-label">
               <Row type="flex" justify="center">
-                <Text style={{ fontSize: "3rem" }} id="break-length">
+                <Text style={{ fontSize: '3rem' }} id="break-length">
                   {this.state.breakLength}
                 </Text>
               </Row>
@@ -117,13 +149,12 @@ export default class App extends Component {
 
           <Col span={12}>
             <Card
-              style={{ margin: "1rem" }}
+              style={{ margin: '1rem' }}
               title="Session label"
-              id="session-label"
-            >
+              id="session-label">
               <Row type="flex" justify="center">
                 <Col>
-                  <Text style={{ fontSize: "3rem" }} id="session-length">
+                  <Text style={{ fontSize: '3rem' }} id="session-length">
                     {this.state.sessionLength}
                   </Text>
                 </Col>
@@ -165,7 +196,7 @@ export default class App extends Component {
         </Row>
 
         <Row type="flex" justify="center">
-          <Col span={6} style={{ textAlign: "center" }}>
+          <Col span={6} style={{ textAlign: 'center' }}>
             <Card>
               <Row>
                 <Col>
@@ -175,10 +206,9 @@ export default class App extends Component {
               <Row>
                 <Col>
                   <Text
-                    style={{ fontSize: "2rem", fontWeight: "bold" }}
+                    style={{ fontSize: '2rem', fontWeight: 'bold' }}
                     level={1}
-                    id="time-left"
-                  >
+                    id="time-left">
                     {this.state.elapsedTime}
                   </Text>
                 </Col>
@@ -187,20 +217,19 @@ export default class App extends Component {
           </Col>
         </Row>
 
-        <Row type="flex" justify="center" style={{ textAlign: "center" }}>
+        <Row type="flex" justify="center" style={{ textAlign: 'center' }}>
           <Col span={8}>
             <Button
               id="start_stop"
               type="dashed"
               shape="round"
-              onClick={this.state.etat === false ? this.play : this.stop}
-            >
+              onClick={this.state.etat === false ? this.play : this.stop}>
               play/pause
             </Button>
           </Col>
           <Col span={8}>
-            <Text id="timer-label" style={{ fontSize: "2rem" }}>
-              {this.state.etat === true ? "running" : "stopped"}
+            <Text id="timer-label" style={{ fontSize: '2rem' }}>
+              {this.state.etat === true ? 'running' : 'stopped'}
             </Text>
           </Col>
           <Col span={8}>
