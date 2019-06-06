@@ -101,7 +101,7 @@ export default class App extends Component {
           </Title>
         </Row> */}
 
-        <Row>
+        {/* <Row>
           <Col span={12}>
             <Card
               style={{ margin: '1rem' }}
@@ -193,7 +193,7 @@ export default class App extends Component {
               </Row>
             </Card>
           </Col>
-        </Row>
+        </Row> */}
 
         <Row type="flex" justify="center">
           <Col span={6} style={{ textAlign: 'center' }}>
