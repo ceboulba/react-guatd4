@@ -59,7 +59,7 @@ export default class App extends Component {
     this.setState({
       sessionLength: 25,
       breakLength: 5,
-      elapsedTime: this.state.sessionLength,
+      elapsedTime: 25,
     })
   }
 
@@ -75,14 +75,14 @@ export default class App extends Component {
               num={this.state.breakLength}
               quoi="breakLength"
               addTime={() => {
-                this.state.breakLength < 60
+                this.state.breakLength < 60 && this.state.etat === false
                   ? this.setState({
                       breakLength: (this.state.breakLength += 1),
                     })
                   : null
               }}
               subTime={() => {
-                this.state.breakLength > 1
+                this.state.breakLength > 1 && this.state.etat === false
                   ? this.setState({
                       breakLength: (this.state.breakLength -= 1),
                     })
@@ -97,14 +97,14 @@ export default class App extends Component {
               num={this.state.sessionLength}
               quoi="sessionLength"
               addTime={() => {
-                this.state.sessionLength < 60
+                this.state.sessionLength < 60 && this.state.etat === false
                   ? this.setState({
                       sessionLength: (this.state.sessionLength += 1),
                     })
                   : null
               }}
               subTime={() => {
-                this.state.sessionLength > 1
+                this.state.sessionLength > 1 && this.state.etat === false
                   ? this.setState({
                       sessionLength: (this.state.sessionLength -= 1),
                     })
