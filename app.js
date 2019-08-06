@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from "react"
 import { Card, Button, Row, Col, Typography } from "antd"
 import AppTitle from "./components/appTitle"
+import TimeHandler from "./components/timeHandler"
 
 const { Title } = Typography
 const { Text } = Typography
@@ -73,6 +74,11 @@ export default class App extends Component {
     return (
       <Fragment>
         <AppTitle />
+        <TimeHandler
+          action={() =>
+            this.setState({ sessionLength: (this.state.sessionLength += 1) })
+          }
+        />
         <Row type="flex" justify="center">
           <Title level={3} style={{ margin: "2rem" }}>
             Free Code Camp Pomodoro Clock
